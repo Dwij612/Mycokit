@@ -1,0 +1,3 @@
+# MycoKit project website — unlisted (W-19): no search engine should index any of it.
+User-agent: *
+Disallow: /

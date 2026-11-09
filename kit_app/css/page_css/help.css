@@ -1,0 +1,59 @@
+/* help.css — Digital tutorial, tips, glossary, sources. */
+.placement {
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  background: var(--white);
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius-sm);
+}
+.placement svg { display: block; width: 100%; max-width: 30rem; height: auto; margin-inline: auto; image-rendering: pixelated; }
+.placement__label { font-family: var(--font-display); font-size: 20px; fill: var(--ink); }
+.placement figcaption { margin-top: var(--space-2); font-size: var(--step--1); font-weight: 600; }
+
+.tips { display: grid; gap: var(--space-3); padding-left: 1.25rem; }
+.tips li::marker { color: var(--purple); }
+
+.glossary { display: grid; gap: var(--space-3); }
+.glossary > div { padding-bottom: var(--space-3); border-bottom: 1px solid var(--grey-300); }
+.glossary dt { font-family: var(--font-display); font-size: var(--step-1); }
+.glossary dd { margin-top: var(--space-1); }
+
+.sources { display: grid; gap: var(--space-2); padding-left: 1.25rem; font-size: var(--step--1); }
+.sources cite { font-style: italic; }
+
+/* ---------- topics that open and close (Dwij, 5 Oct 2026; js/modules/accordion.js) ---------- */
+.topic .topic__h { margin: 0; }
+.topic__btn {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  width: 100%; min-height: 2.75rem; padding: 0; margin: calc(-1 * var(--space-1)) 0;
+  background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.topic__chev { flex: none; transition: transform 0.2s ease; }
+.topic__btn[aria-expanded="true"] .topic__chev { transform: rotate(180deg); }
+@media (hover: hover) { .topic__btn:hover .topic__label { text-decoration: underline; text-underline-offset: 0.2em; } }
+.topic__body { margin-top: var(--space-4); }
+.topic__body > p:first-child { margin-top: 0; }
+@media (prefers-reduced-motion: reduce) { .topic__chev { transition: none; } }
+@media print { .topic__body[hidden] { display: block !important; } .topic__chev { display: none; } }
+
+/* ---------- other mushroom shapes (Dwij, 19 Oct 2026) ---------- */
+.shape-link { margin-top: var(--space-3); font-weight: 600; }
+.shape { margin-top: var(--space-5); padding-top: var(--space-5); border-top: var(--line) solid var(--grey-300); }
+.shape__name { font-size: var(--step-1); }
+.shape__like { margin-top: var(--space-1); }
+.shape .placement { margin-top: var(--space-3); }
+.pins { display: grid; gap: var(--space-2); margin-top: var(--space-4); padding: 0; list-style: none; }
+.pins li { display: grid; grid-template-columns: 4.25rem minmax(0, 1fr); column-gap: var(--space-2); align-items: start; }
+.pins__keys { display: flex; gap: var(--space-2); }
+/* the number is the label; the colour square matches the probe's line, so colour is never the only cue (WCAG 1.4.1) */
+.pin { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-display); }
+.pin::before {
+  content: ""; flex: none; width: 0.875rem; height: 0.875rem;
+  background: var(--pin); border: var(--line) solid var(--ink); border-radius: 0.1875rem;
+}
+.pin--r { --pin: var(--ink-deep); }
+.pin--1 { --pin: var(--probe-1); }
+.pin--2 { --pin: var(--probe-2); }
+.pin--3 { --pin: var(--probe-3); }
+.pin--4 { --pin: var(--probe-4); }
+.shape__note { margin-top: var(--space-5); font-size: var(--step--1); color: var(--grey-500); }

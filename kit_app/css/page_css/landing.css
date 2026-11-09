@@ -1,0 +1,158 @@
+/* landing.css — the start screen only. */
+
+.start-form {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+@media (min-width: 40em) {
+  .start-form { gap: var(--space-5); margin-top: var(--space-5); }
+  .kit-check  { gap: var(--space-4); padding: var(--space-4); }
+}
+
+/* ---------- kit check ---------- */
+.kit-check {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--lavender-50);
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius-sm);
+}
+.kit-check__legend {
+  float: left;                               /* lets the legend sit inside the padded box */
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+/* space on the card */
+.storage { display: grid; gap: var(--space-2); }
+.storage__row { display: flex; align-items: center; gap: var(--space-2); }
+.storage__icon { flex: none; color: var(--ink); }
+.storage__text { font-weight: 500; }
+.storage[data-level="warn"] .meter__fill { background-color: var(--yellow-dark); }
+.storage[data-level="block"] .meter__fill { background-color: var(--bad); }
+.storage[data-level="warn"]  .storage__text::before { content: "Low · "; color: var(--warn); font-weight: 700; }
+.storage[data-level="block"] .storage__text::before { content: "Full · "; color: var(--bad); font-weight: 700; }
+
+/* the four probes — mobile first: one row of four compact tiles */
+.probes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.probe {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.125rem;
+  padding: var(--space-2) var(--space-1) var(--space-2);
+  background: var(--white);
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 160ms var(--ease-pop), box-shadow 160ms;
+}
+.probe__num {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1;
+}
+.probe__swatch {                                 /* identity colour, matches the graph lines on Home */
+  width: 1.5rem; height: 0.25rem;
+  border-radius: 999px;
+  background: var(--probe-colour, var(--grey-300));
+  outline: 1px solid rgb(2 0 95 / 0.35);
+}
+.probe__icon { margin-top: var(--space-1); }
+.probe__word { font-size: var(--step--1); font-weight: 700; line-height: 1.2; }
+
+.probe[data-state="reading"]  { color: var(--ink); }
+.probe[data-state="reading"] .probe__icon,
+.probe[data-state="reading"] .probe__word { color: var(--ok); }
+.probe[data-state="silent"] {
+  background: var(--bad-bg);
+  border-style: dashed;                          /* shape differs, not only colour (WCAG 1.4.1) */
+  box-shadow: none;
+  transform: translate(0.1875rem, 0.1875rem);    /* "pushed in", like an unpressed key */
+}
+.probe[data-state="silent"] .probe__icon,
+.probe[data-state="silent"] .probe__word { color: var(--bad); }
+.probe[data-state="checking"] .probe__icon,
+.probe[data-state="checking"] .probe__word { color: var(--grey-500); }
+.probe[data-changed] { animation: probe-pop 360ms var(--ease-pop); }
+@keyframes probe-pop { 40% { transform: scale(1.08); } }
+
+.probes__summary { font-size: var(--step--1); font-weight: 600; }
+
+/* ---------- actions ---------- */
+.actions {
+  display: grid;
+  gap: var(--space-3);
+}
+.actions .btn { width: 100%; }
+.panel > .actions { margin-top: var(--space-4); }
+
+/* ---------- recording state ---------- */
+.eyebrow--live { background: var(--white); }
+.live-dot {
+  width: 0.625rem; height: 0.625rem;
+  background: var(--bad);
+  border-radius: 50%;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.35; } }
+
+.session {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.session__item {
+  padding: var(--space-3) var(--space-4);
+  background: var(--cream);
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius-sm);
+}
+.session dt { font-size: var(--step--1); color: var(--ink); }
+.session dd { font-size: var(--step-1); font-weight: 600; margin-top: var(--space-1); }
+.session dd.num { font-size: var(--step-2); font-weight: 500; letter-spacing: -0.02em; }
+
+/* ---------- offline ---------- */
+.panel--error { background: var(--bad-bg); }
+.fix-list {
+  margin-top: var(--space-4);
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* ---------- loading ---------- */
+.panel--loading { text-align: left; }
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot { animation: none; }
+}
+
+/* space on the card — quiet line at the bottom (moved out of the kit check, 3 Oct 2026) */
+.storage-note {
+  display: flex; align-items: center; gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--step--1);
+  color: var(--grey-500);
+}
+.storage-note svg { flex: none; }
+.storage-note[data-level="warn"]  span::before { content: "Low · "; color: var(--warn); font-weight: 700; }
+.storage-note[data-level="block"] span::before { content: "Full · "; color: var(--bad); font-weight: 700; }
+
+/* 28 Oct 2026 (Dwij): before Start — take the phone off silent, the prompts play a sound */
+.sound-note {
+  display: flex; gap: var(--space-2); align-items: flex-start;
+  margin-top: var(--space-4); padding: var(--space-3);
+  font-size: var(--step--1);
+  background: var(--cream); border: var(--line) solid var(--ink); border-radius: var(--radius-sm);
+}
+.sound-note svg { flex: none; margin-top: 0.1rem; }

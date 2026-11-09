@@ -1,0 +1,5 @@
+# Netlify and Cloudflare Pages read this file: every response carries "don't index" (W-19).
+/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: same-origin
+  X-Content-Type-Options: nosniff

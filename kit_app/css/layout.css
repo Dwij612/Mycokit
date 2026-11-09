@@ -1,0 +1,31 @@
+/* layout.css — macro structure only: header, main column, room for the mascot dock. */
+
+.site-header {
+  background: var(--ink);
+  color: var(--white);
+  border-bottom: var(--line) solid var(--ink-deep);
+}
+
+.site-header__inner {
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--space-4) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.site-header__inner .wordmark { text-decoration: none; }
+
+.site-main {
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--space-4) var(--space-3) 8.5rem;  /* room for the action bar, so the last control can scroll clear of it */
+}
+
+.site-main:focus { outline: none; }
+
+@media (min-width: 40em) {
+  .site-header__inner { padding-inline: var(--space-5); }
+  .site-main { padding: var(--space-7) var(--space-5) 9rem; }
+}

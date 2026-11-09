@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#02005F">
+  <title>About — MycoKit</title>
+  <link rel="icon" type="image/png" href="assets/mascot/ready.png">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page_css/about.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="about">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html">MycoKit</a>
+      <p class="kit-chip" data-kit-chip data-state="online">
+        <span class="kit-chip__dot" aria-hidden="true"></span>
+        <span data-kit-chip-text>Kit connected</span>
+      </p>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every inner page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <p class="crumb"><a href="tutorial.html"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>Help</a></p>
+
+    <!-- ===== About the project: F-37, F-38 ===== -->
+    <section class="panel" aria-labelledby="about-title">
+      <p class="eyebrow">About</p>
+      <h1 id="about-title" class="panel__title">Listening to fungi</h1>
+      <div class="prose">
+        <p>Mushrooms and the networks they grow from make tiny, slow electrical changes. Researchers at the University of Queensland study these signals to learn what they might mean.</p>
+        <p>MycoKit lets anyone record them, with a phone and no programming. Each recording you share adds to a growing collection that the project can compare.</p>
+        <h2 class="panel__h2">Why turn it into sound?</h2>
+        <p>Signals that change over hours are hard to take in by eye. Played back as sound, a whole day fits into half a minute, and patterns that repeat are easier to notice. The sound always comes with the picture — it helps you follow the trace, it doesn't replace it.</p>
+        <h2 class="panel__h2">What it can't tell you</h2>
+        <p>Nobody yet knows what most of these signals mean, or whether a change is the mushroom "responding". MycoKit shows you what was measured and when. What it means is still an open question — which is why your recordings are useful.</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="site-title">
+      <h2 id="site-title" class="panel__h2">See other people's recordings</h2>
+      <p>The project website has recordings from other kits, and a link to the project's iNaturalist page. It opens once you're back online.</p>
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+        <span>Website QR code and link go here.<br>Opens when you're back online.</span>
+      </div>
+    </section>
+
+    <!-- DEMO ONLY: reset, for running sessions with several people -->
+    <section class="panel demo-tools" aria-labelledby="demo-title" data-demo-tools hidden>
+      <h2 id="demo-title" class="panel__h2">Demo tools</h2>
+      <p>This is a demo with made-up data. Resetting puts back the example recordings and clears anything started or saved during a session.</p>
+      <button class="btn btn--outline btn--small" type="button" data-reset>Reset the demo</button>
+      <p class="demo-tools__hint">In the demo, time runs 30 times faster: 10 minutes of recording take about 20 seconds.</p>
+      <p class="demo-tools__hint"><a href="index.html?demo=0">Leave the demo</a> and use the real kit.</p>
+    </section>
+
+  </main>
+
+  <!-- the mushroom dock is added by js/modules/shell.js -->
+  <noscript>
+    <p class="noscript">MycoKit needs JavaScript to talk to the kit. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

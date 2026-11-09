@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Unlisted, not private (W-19): kept out of search engines; anyone with the link can read it. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#02005F">
+  <title>Team — The Underground Brain Project</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/page_css/team.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="team">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark wordmark--site" href="index.html">The Underground Brain Project</a>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <!-- ===== Team: moderation (W-21) and the iNaturalist list (W-20). Not linked in the menu. ===== -->
+    <section class="panel" aria-labelledby="team-title">
+      <p class="eyebrow">Team</p>
+      <h1 id="team-title" class="panel__title">Studies, for the team</h1>
+      <form class="stack" data-team-form novalidate>
+        <div class="field">
+          <label class="field__label" for="team-code">Team code</label>
+          <input class="field__input field__input--code num" id="team-code" type="password" autocomplete="off" aria-describedby="team-error" required>
+          <p class="field__error" id="team-error" data-team-error hidden></p>
+        </div>
+        <button class="btn btn--primary" type="submit">Open</button>
+      </form>
+      <p class="field__hint" data-team-hint>In the live version this is a proper team login.</p>
+    </section>
+
+    <section class="panel" data-team-list-panel hidden aria-labelledby="team-list-title">
+      <h2 id="team-list-title" class="panel__h2">All studies</h2>
+      <p class="field__hint">Hidden studies don't appear on the website. "Remove for good" is for when a contributor emails to ask.</p>
+      <ul class="team-list" data-team-list></ul>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="site-foot__inner">
+      <p>The Underground Brain Project · UQ MycoWave</p>
+      <p><a href="about.html#privacy">Privacy</a> · <a href="about.html#remove">Removing a study</a> · <a href="team.html">Team</a></p>
+    </div>
+  </footer>
+
+  <!-- (the mushroom dock was removed from the website, Dwij 5 Oct 2026) -->
+  <noscript>
+    <p class="noscript">This website needs JavaScript. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

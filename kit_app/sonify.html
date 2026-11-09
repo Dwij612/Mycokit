@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#02005F">
+  <title>Listen — MycoKit</title>
+  <link rel="icon" type="image/png" href="assets/mascot/ready.png">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page_css/listen.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="listen">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html">MycoKit</a>
+      <p class="kit-chip" data-kit-chip data-state="online">
+        <span class="kit-chip__dot" aria-hidden="true"></span>
+        <span data-kit-chip-text>Kit connected</span>
+      </p>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every inner page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <section class="panel empty" data-view="none" aria-labelledby="none-title" hidden>
+      <p class="eyebrow">Listen</p>
+      <h1 id="none-title" class="panel__title">Nothing to listen to yet</h1>
+      <p>Start a recording first. You can hear it here live, from the moment it starts.</p>
+      <div class="action-bar">
+        <div class="action-bar__inner">
+          <a class="btn btn--primary" href="index.html">Start a recording</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Sonification =====
+         8 Oct 2026 (Dwij): no 10-minute lock — real time from the start, the faster speeds from 10 minutes.
+         3 Oct 2026 (Dwij): back to the earlier layout. The recording is chosen for you (the one running now,
+         up to this moment), and recording, speed and probes sit behind "Change recording, speed or probes". -->
+    <div data-view="listen" hidden>
+      <section class="panel" aria-labelledby="listen-title">
+        <p class="eyebrow">Listen</p>
+        <h1 id="listen-title" class="panel__title">Hear the signal</h1>
+        <p class="live-meta" data-selected>—</p>
+
+        <!-- 28 Oct 2026 (Dwij): the speed is its own control, above the graphs, and looks like a menu.
+             It was inside "Change recording, speed or probes", where it was easy to miss. Speeds that aren't
+             open yet are greyed in the menu, and the line under it says when they open. -->
+        <div class="speed-pick">
+          <label class="speed-pick__label" for="speed">
+            <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M3 14a7 7 0 1 1 14 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 14l4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14" r="1.6" fill="currentColor"/></svg>
+            Speed
+          </label>
+          <span class="speed-pick__box">
+            <select class="speed-pick__select" id="speed" data-speed aria-describedby="speed-hint"></select>
+            <svg class="speed-pick__chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+        </div>
+        <p class="field__hint speed-pick__hint" id="speed-hint" data-speed-hint hidden></p>
+
+        <!-- the sound always has its picture -->
+        <div data-player>
+          <div class="listen-chart" data-chart></div>
+          <p class="trace__legend">Higher activity plays higher notes. Each probe is its own voice. <span class="demo-note">Demo data.</span></p>
+        </div>
+
+        <!-- 8 Oct 2026: a way to check the phone makes sound, and a real recording to try -->
+        <div class="listen-tools">
+          <button class="btn btn--outline btn--small" type="button" data-test-sound>Test sound</button>
+          <button class="btn btn--outline btn--small" type="button" data-example>Hear an example</button>
+        </div>
+        <p class="note note--plain sound-hint" data-sound-hint hidden role="status">No sound? Check your phone isn't on silent and the volume is up, then tap <strong>Test sound</strong>.</p>
+
+        <details class="explain listen-options" data-options>
+          <summary>Change recording or probes</summary>
+          <div class="explain__body settings">
+            <div class="field">
+              <label class="field__label" for="pick">Recording</label>
+              <select class="field__input" id="pick" data-pick></select>
+            </div>
+            <fieldset class="choice">
+              <legend class="field__label">Probes to hear</legend>
+              <label><input type="checkbox" name="probe" value="1" checked> Probe 1</label>
+              <label><input type="checkbox" name="probe" value="2" checked> Probe 2</label>
+              <label><input type="checkbox" name="probe" value="3" checked> Probe 3</label>
+              <label><input type="checkbox" name="probe" value="4" checked> Probe 4</label>
+            </fieldset>
+          </div>
+        </details>
+      </section>
+
+      <div class="action-bar">
+        <div class="action-bar__inner">
+          <p class="action-bar__reason num" data-clock aria-live="off">0:00 / 0:00</p>
+          <button class="btn btn--primary" type="button" data-play aria-pressed="false" disabled>
+            <svg class="icon-play" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="currentColor"/></svg>
+            <svg class="icon-pause" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 2h4v12H3zM9 2h4v12H9z" fill="currentColor"/></svg>
+            <span data-play-label>Play</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- the mushroom dock is added by js/modules/shell.js -->
+  <noscript>
+    <p class="noscript">MycoKit needs JavaScript to talk to the kit. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

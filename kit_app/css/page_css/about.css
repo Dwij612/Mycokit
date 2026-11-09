@@ -1,0 +1,5 @@
+/* about.css — About the project. */
+.demo-tools { background: var(--lavender-50); border-style: dashed; box-shadow: none; }
+.demo-tools .btn { margin-top: var(--space-3); }
+.demo-tools__hint { margin-top: var(--space-3); font-size: var(--step--1); color: var(--grey-500); }
+.demo-tools code { font-family: var(--font-num); background: var(--white); padding: 0 0.25rem; border-radius: 0.25rem; }

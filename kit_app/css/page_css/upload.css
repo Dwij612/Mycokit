@@ -1,0 +1,58 @@
+/* upload.css — Prepare upload and the hand-off. */
+.code-card {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  text-align: center;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.code-card__label { font-size: var(--step--1); color: var(--lavender); }
+.code-card__code { margin-top: var(--space-1); font-size: var(--step-3); font-weight: 600; letter-spacing: 0.06em; color: var(--yellow); }
+.code-card__hint { margin-top: var(--space-2); font-size: var(--step--1); color: var(--lavender); }
+.next-list { display: grid; gap: var(--space-2); margin: var(--space-5) 0 var(--space-4); padding-left: 1.25rem; }
+.next-list li::marker { font-family: var(--font-display); font-weight: 700; }
+
+/* 28 Oct 2026 (Dwij): the two photos, taken in the app */
+.shots { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
+.shot {
+  display: flex; gap: var(--space-3); align-items: center;
+  padding: var(--space-3);
+  background: var(--white); border: var(--line) solid var(--ink); border-radius: var(--radius-sm);
+}
+.shot__preview {
+  flex: none; width: 4.5rem; height: 4.5rem;
+  display: grid; place-items: center;
+  background: var(--lavender-50) center / cover no-repeat;
+  border: var(--line) dashed var(--grey-500); border-radius: var(--radius-sm);
+}
+.shot__preview::before {                       /* a camera, until there's a photo */
+  content: ""; width: 1.75rem; height: 1.4rem;
+  background: var(--grey-500);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3E%3Cpath d='M7 1h6l1.5 2H19v12H1V3h4.5z' fill='none' stroke='black' stroke-width='1.6'/%3E%3Ccircle cx='10' cy='9' r='3.4' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3E%3Cpath d='M7 1h6l1.5 2H19v12H1V3h4.5z' fill='none' stroke='black' stroke-width='1.6'/%3E%3Ccircle cx='10' cy='9' r='3.4' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.shot[data-taken] .shot__preview { border-style: solid; border-color: var(--ink); }
+.shot[data-taken] .shot__preview::before { display: none; }
+.shot__body { display: grid; gap: var(--space-1); justify-items: start; min-width: 0; }
+.shot__title { font-weight: 600; }
+.shot__status { font-size: var(--step--1); color: var(--grey-500); }
+.shot[data-taken] .shot__status { color: var(--ok); font-weight: 600; }
+.shot__take { margin-top: var(--space-1); cursor: pointer; }
+.shot__take:focus-within { box-shadow: var(--shadow-sm), var(--focus); }
+.shot[data-taken] .shot__take { --btn-bg: var(--white); }
+.shot__where { margin-top: var(--space-3); }
+
+/* 28 Oct 2026 (Dwij): the website's QR code on the hand-off (was a placeholder) */
+.site-qr {
+  display: grid; justify-items: center; gap: var(--space-2);
+  padding: var(--space-4);
+  text-align: center; text-decoration: none; color: var(--ink);
+  background: var(--white);
+  border: var(--line) solid var(--ink); border-radius: var(--radius-sm);
+}
+.site-qr__img { width: 10rem; height: 10rem; }
+.site-qr__text { font-size: var(--step--1); }
+.site-qr__url { font-weight: 600; text-decoration: underline; overflow-wrap: anywhere; }
+.site-qr:focus-visible { box-shadow: var(--focus); }

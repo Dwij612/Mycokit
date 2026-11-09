@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Unlisted, not private (W-19): kept out of search engines; anyone with the link can read it. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#02005F">
+  <title>About and privacy — The Underground Brain Project</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/page_css/about.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="about">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark wordmark--site" href="index.html">The Underground Brain Project</a>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <!-- ===== W5 About and reference: the project, the iNaturalist page (W-13), privacy (W-08), removing a study (W-07) ===== -->
+    <section class="panel" aria-labelledby="about-title">
+      <p class="eyebrow">About</p>
+      <h1 id="about-title" class="panel__title">The Underground Brain Project</h1>
+      <div class="prose">
+        <p>UQ MycoWave is part of the Underground Brain Project at the University of Queensland, which explores the electromagnetic communication systems of fungal mycelium. For more background on the research aims and team, see <a href="https://eecs.uq.edu.au/project/fungi" target="_blank" rel="noopener">the project's page at UQ</a>.</p>
+        <p>The studies here are recordings made with MycoKit, on cultivated lab specimens and in the field, together with photos of the mushroom and notes on what was observed.</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="inat-title">
+      <h2 id="inat-title" class="panel__h2">On iNaturalist</h2>
+      <div class="prose">
+        <p>The project's iNaturalist page collects observations of fungi that are linked to our bioelectricity recording work. The team chooses which studies from this site go there; you don't post there yourself.</p>
+        <p>Observations can be contributed by:</p>
+        <ul class="list">
+          <li>members of the Underground Brain Project research group,</li>
+          <li>students and staff taking part in related courses or research projects, and</li>
+          <li>invited collaborators and citizen scientists working with us on fungal bioelectricity.</li>
+        </ul>
+        <p>Interested in contributing observations or collaborating on fungal bioelectricity recordings? Contact the project admins (<strong>mycowave</strong>) through iNaturalist messages.</p>
+      </div>
+      <p><a class="btn btn--outline btn--small" href="#" data-inat target="_blank" rel="noopener">The Underground Brain: MycoWave recordings on iNaturalist</a></p>
+    </section>
+
+    <section class="panel" id="privacy" aria-labelledby="privacy-title">
+      <h2 id="privacy-title" class="panel__h2">Privacy</h2>
+      <div class="prose">
+        <!-- Uploads are SIMULATED by design (Dwij, 5 Oct 2026): the thesis is about interaction design and the
+             citizen-science flow, not about storing people's data. Nothing is sent to a server. -->
+        <p><strong>Nothing is uploaded.</strong> This website is part of a thesis on interaction design and citizen science. You can go through every step of sharing a recording, but the upload is simulated: your recording, notes and photos never leave your phone, and no server keeps them.</p>
+        <p><strong>What a shared study holds:</strong> the recording (the four probes, one reading a second), the recording ID, the date, the name you chose to show (if any), your notes and your photos.</p>
+        <!-- 28 Oct 2026 (Dwij): photos are taken in the kit app and come inside the bundle; the location is simulated. -->
+        <p><strong>Photos are taken in the kit app</strong> and come inside the bundle, with when and where each was taken. In this prototype the location is simulated: the kit app runs on the kit's own Wi-Fi, where phones don't share their location. The study page shows the location and links to it on a map.</p>
+        <p><strong>Who can see it:</strong> only you, in this browser on this phone. The example studies are the thesis's own recordings.</p>
+        <p><strong>For how long:</strong> until you clear this browser's data, or use <a href="#clear">Clear what I've shared</a> below.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="remove" aria-labelledby="remove-title">
+      <h2 id="remove-title" class="panel__h2">Removing a study</h2>
+      <p>Email the project team with your study's recording ID (it looks like <span class="num">FK-7Q4M</span>) and we'll remove it — photos, notes and data. In this simulation your study is only on your phone, so you can also <a href="#clear">clear it yourself</a>.</p>
+      <p><a class="btn btn--secondary btn--small" href="#" data-email>Email the team</a></p>
+    </section>
+
+    <!-- Clears this browser: the studies shared here go, the examples come back. (Was "Mock tools".) -->
+    <section class="panel demo-tools" id="clear" aria-labelledby="clear-title" data-mock-tools hidden>
+      <h2 id="clear-title" class="panel__h2">Clear what I've shared</h2>
+      <p>Everything you shared is saved in this browser only. Clearing removes it and puts the example studies back. Use it between participants, too.</p>
+      <button class="btn btn--outline btn--small" type="button" data-reset>Clear what I've shared</button>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="site-foot__inner">
+      <p>The Underground Brain Project · UQ MycoWave</p>
+      <p><a href="about.html#privacy">Privacy</a> · <a href="about.html#remove">Removing a study</a> · <a href="team.html">Team</a></p>
+    </div>
+  </footer>
+
+  <!-- (the mushroom dock was removed from the website, Dwij 5 Oct 2026) -->
+  <noscript>
+    <p class="noscript">This website needs JavaScript. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,7 @@
+/* team.css — the team page. */
+.team-list { display: grid; gap: var(--space-3); }
+.team-row { display: grid; gap: var(--space-2); padding: var(--space-3); background: var(--white); border: var(--line) solid var(--ink); border-radius: var(--radius-sm); }
+.team-row__head { display: grid; gap: 0.125rem; }
+.team-row__head a { font-weight: 700; }
+.team-row__meta { font-size: var(--step--1); color: var(--grey-500); }
+.team-row .link-danger { justify-self: start; }

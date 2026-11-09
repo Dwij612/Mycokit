@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Unlisted, not private (W-19): kept out of search engines; anyone with the link can read it. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#02005F">
+  <title>Upload — The Underground Brain Project</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/page_css/upload.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="upload">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark wordmark--site" href="index.html">The Underground Brain Project</a>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <!-- ===== W3 Upload (Flow 7): access code → bundle → notes → preview → publish =====
+         28 Oct 2026 (Dwij, after the summative test): no photo step. The photos are taken in the kit app and come
+         inside the bundle, with a simulated location; the bundle step shows them. -->
+    <section class="panel" aria-labelledby="upload-title">
+      <p class="eyebrow">Upload</p>
+      <h1 id="upload-title" class="panel__title">Share your recording</h1>
+      <!-- Uploads are SIMULATED by design (Dwij, 5 Oct 2026): the whole flow works, nothing is sent anywhere. -->
+      <p class="sim-note">Sharing here is simulated for the thesis study. You go through every step, but nothing is uploaded: your recording and photos stay on this phone.</p>
+      <p class="upload__progress" data-progress aria-live="polite">Step 1 of 4</p>
+      <ol class="stepper" aria-hidden="true">
+        <li data-dot="code"></li><li data-dot="bundle"></li><li data-dot="notes"></li><li data-dot="preview"></li>
+      </ol>
+    </section>
+
+    <!-- 1. access code (W-01) -->
+    <section class="panel step" data-step="code" aria-labelledby="s1-title">
+      <h2 id="s1-title" class="panel__h2" tabindex="-1">Access code</h2>
+      <form class="stack" data-code-form novalidate>
+        <div class="field">
+          <label class="field__label" for="code">Access code</label>
+          <input class="field__input field__input--code num" id="code" name="code" type="text" maxlength="9" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="code-hint code-error" required>
+          <p class="field__hint" id="code-hint">It's printed on the kit, under the QR code. You don't need it to look at studies — only to add one.</p>
+          <p class="field__error" id="code-error" data-code-error hidden></p>
+        </div>
+        <button class="btn btn--primary" type="submit">Continue</button>
+      </form>
+    </section>
+
+    <!-- 2. the bundle from the kit (W-02) -->
+    <section class="panel step" data-step="bundle" aria-labelledby="s2-title" hidden>
+      <h2 id="s2-title" class="panel__h2" tabindex="-1">Your recording</h2>
+      <p class="step__lead">On the kit you pressed <strong>Prepare upload</strong>. That saved one file to your phone, named with your recording ID and ending in <code class="file-ext">.mycokit.json</code>. Your photos are inside it.</p>
+      <div class="field">
+        <label class="btn btn--secondary file-btn" for="bundle-file">Choose the file</label>
+        <input class="visually-hidden" id="bundle-file" type="file" accept=".json,application/json" data-bundle-input aria-describedby="bundle-hint bundle-error">
+        <!-- Where the file is. The icon slots take the official platform icons if added (README → "Platform icons"). -->
+        <div class="field__hint os-hint" id="bundle-hint">
+          <p class="os-hint__row" data-os="ios"><svg class="os-hint__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="1.5" width="8" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 12.2h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span><strong>iPhone:</strong> Files app → Downloads</span></p>
+          <p class="os-hint__row" data-os="android"><svg class="os-hint__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="1.5" width="8" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 12.2h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span><strong>Android:</strong> Files → Downloads</span></p>
+        </div>
+        <p class="field__error" id="bundle-error" data-bundle-error hidden></p>
+      </div>
+      <div class="bundle-card" data-bundle-card hidden>
+        <dl class="facts">
+          <div><dt>Recording ID</dt><dd class="num" data-b-code>—</dd></div>
+          <div><dt>Recorded</dt><dd data-b-when>—</dd></div>
+          <div><dt>Length</dt><dd data-b-length>—</dd></div>
+          <div><dt>Notes</dt><dd data-b-events>—</dd></div>
+          <div><dt>Photos</dt><dd data-b-photos>—</dd></div>
+        </dl>
+        <div class="bundle-card__chart" data-b-chart></div>
+        <!-- the photos taken in the kit app (location simulated in this prototype) -->
+        <ul class="photo-list" data-photo-list aria-label="Photos in this bundle"></ul>
+        <p class="note note--plain" data-b-photos-none hidden>No photos in this bundle. That's fine — the study is shared without them.</p>
+        <p class="note note--plain" data-b-demo hidden>This bundle came from the kit app's demo, so its data is made up. It can still be uploaded to try the website.</p>
+        <p class="note note--plain" data-b-again hidden>This recording was already shared from this browser. Uploading it again makes a second study.</p>
+        <div class="field">
+          <label class="field__label" for="shown-name">Name to show <span class="field__optional">(optional)</span></label>
+          <input class="field__input" id="shown-name" type="text" maxlength="24" autocomplete="nickname" aria-describedby="name-hint">
+          <p class="field__hint" id="name-hint">From the kit. Change it, or clear it to share without a name.</p>
+        </div>
+      </div>
+      <div class="step__nav">
+        <button class="btn btn--quiet btn--small" type="button" data-back>Back</button>
+        <button class="btn btn--primary" type="button" data-next disabled>Continue</button>
+      </div>
+    </section>
+
+    <!-- 3. photos (W-03): removed 28 Oct 2026 (Dwij). The photos come inside the bundle (step 2). -->
+
+    <!-- 3. notes (W-04) -->
+    <section class="panel step" data-step="notes" aria-labelledby="s4-title" hidden>
+      <h2 id="s4-title" class="panel__h2" tabindex="-1">What did you notice?</h2>
+      <div class="field">
+        <label class="field__label" for="notes">What do you think the pattern is? <span class="field__optional">(optional)</span></label>
+        <textarea class="field__input notes-input" id="notes" rows="5" maxlength="2000" aria-describedby="notes-hint"></textarea>
+        <p class="field__hint" id="notes-hint">A guess is fine. "Probe 3 rose and fell every 20 minutes" or "nothing changed when I touched it" are both useful.</p>
+      </div>
+      <div class="step__nav">
+        <button class="btn btn--quiet btn--small" type="button" data-back>Back</button>
+        <button class="btn btn--primary" type="button" data-next>See the preview</button>
+      </div>
+    </section>
+
+    <!-- 4. preview (W-06), then publish -->
+    <section class="step" data-step="preview" aria-labelledby="s5-title" hidden>
+      <div class="panel">
+        <h2 id="s5-title" class="panel__h2" tabindex="-1">Preview</h2>
+        <p>This is how your study looks on the website, <strong>including where each photo was taken</strong> (simulated in this prototype).</p>
+        <button class="btn btn--outline btn--small preview__download" type="button" data-download-summary>Download summary</button>
+      </div>
+      <div class="preview" data-preview></div>
+      <div class="panel publish-bar">
+        <p class="field__error" data-publish-error hidden></p>
+        <!-- simulated upload: a short progress bar, then done. Nothing is sent. -->
+        <div class="sim-progress" data-sim-progress hidden>
+          <progress max="100" value="0" aria-labelledby="sim-progress-label" data-sim-bar></progress>
+          <p id="sim-progress-label" class="sim-progress__label" data-sim-label>Uploading…</p>
+        </div>
+        <div class="step__nav">
+          <button class="btn btn--quiet btn--small" type="button" data-back>Change something</button>
+          <button class="btn btn--primary" type="button" data-publish>Publish</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- done -->
+    <section class="panel step" data-step="done" aria-labelledby="s6-title" hidden>
+      <p class="eyebrow">Published</p>
+      <h2 id="s6-title" class="panel__title" tabindex="-1">Thank you!</h2>
+      <p>Your study is shared.</p>
+      <p><a class="btn btn--primary" href="#" data-done-link>See your study</a></p>
+      <p class="note note--plain" data-done-remove></p>
+      <p class="note note--plain" data-done-mock hidden>This was a simulated upload: nothing left your phone. Your study is saved in this browser only, so you can see it on the Studies page. Nobody else can see it.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="site-foot__inner">
+      <p>The Underground Brain Project · UQ MycoWave</p>
+      <p><a href="about.html#privacy">Privacy</a> · <a href="about.html#remove">Removing a study</a> · <a href="team.html">Team</a></p>
+    </div>
+  </footer>
+
+  <!-- (the mushroom dock was removed from the website, Dwij 5 Oct 2026) -->
+  <noscript>
+    <p class="noscript">This website needs JavaScript. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

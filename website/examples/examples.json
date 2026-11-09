@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "note": "Example studies shown on the mock website: Tests 1 and 2 from the thesis (Section 5.3.4; the full files are in 3_Recording_Tests). Location data has been removed from the photos.",
+  "studies": [
+    {
+      "id": "s-test-2",
+      "code": "TEST-2",
+      "title": "Test 2",
+      "name": "Dwij",
+      "started_at": "2026-08-30T18:27:03+10:00",
+      "length_s": 165864,
+      "csv": "examples/test-2/record-2026-08-30-18-27-03-every5s.csv",
+      "photos": [
+        "examples/test-2/setup_close.jpg",
+        "examples/test-2/setup_wide.jpg",
+        "examples/test-2/end_dry.jpg"
+      ],
+      "notes": "First unattended two-day run (46 h 04 min), on a Raspberry Pi 5 with the ADS1219.\nProbe 1 in the flesh of the mushroom, probe 2 in the substrate, probe 3 in the gills, probe 4 in the substrate; the reference in the substrate.\nThe logger ran the whole time without a gap. The two substrate probes began to climb at about hour 12, and from hour 39 all four probes read the same value. Through the first night, all four probes showed a pattern repeating every 140 seconds, most likely from nearby equipment, although its cause was not established.",
+      "events": [],
+      "data_note": "One reading every 5 seconds (the kit recorded one a second; the full file is Test_2.csv in 3_Recording_Tests)."
+    },
+    {
+      "id": "s-test-1",
+      "code": "TEST-1",
+      "title": "Test 1",
+      "name": "Dwij",
+      "started_at": "2026-08-06T12:00:00+10:00",
+      "date_only": true,
+      "length_s": 8219,
+      "csv": "examples/test-1/record-2026-07-08-04-23-02.csv",
+      "photos": [],
+      "notes": "First recording on the Raspberry Pi kit, 2 h 17 min. Four electrodes in the specimen, the reference in the substrate.\nThe first 40 minutes are the electrodes settling; 97 minutes of steady recording follow.\nRecorded on 6 August 2026 — the times inside the file say 8 July because the Pi's clock wasn't set then.",
+      "events": []
+    }
+  ]
+}

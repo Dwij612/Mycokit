@@ -1,0 +1,63 @@
+/* upload.css — W3 Upload. */
+.upload__progress { margin-top: var(--space-2); font-weight: 600; }
+.stepper { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-2); margin-top: var(--space-2); }
+.stepper li { height: 0.5rem; border-radius: 999px; border: var(--line) solid var(--ink); background: var(--white); }
+.stepper li[data-state="done"] { background: var(--purple); }
+.stepper li[data-state="now"] { background: var(--yellow); }
+.step { margin-top: var(--space-4); }
+.step > .panel + .panel, .step .preview + .panel { margin-top: var(--space-4); }
+.step__nav { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); margin-top: var(--space-5); }
+.step__nav .btn--primary { margin-left: auto; }
+.bundle-card { margin-top: var(--space-4); display: grid; gap: var(--space-4); }
+.notes-input { min-height: 8rem; resize: vertical; font-size: var(--step-0); }
+.preview { display: grid; gap: var(--space-4); margin-top: var(--space-4); outline: 0.25rem dashed var(--purple); outline-offset: 0.5rem; border-radius: var(--radius); }
+
+.photo-list { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+.photo-item { display: grid; grid-template-columns: 4.5rem 1fr auto; gap: var(--space-3); align-items: center; padding: var(--space-2); background: var(--white); border: var(--line) solid var(--ink); border-radius: var(--radius-sm); }
+.photo-item__img { width: 4.5rem; aspect-ratio: 1; object-fit: cover; border-radius: 0.375rem; border: var(--line) solid var(--ink); }
+.photo-item__img--none { display: grid; place-items: center; font-size: 0.75rem; color: var(--grey-500); background: var(--lavender-50); }
+.photo-item__text { display: grid; gap: 0.125rem; font-size: var(--step--1); min-width: 0; }
+.photo-item__name { font-weight: 600; overflow-wrap: anywhere; }
+.photo-rejects { display: grid; gap: var(--space-2); margin-top: var(--space-3); }
+.photo-reject { padding: var(--space-2) var(--space-3); background: var(--bad-bg); border: var(--line) dashed var(--bad); border-radius: var(--radius-sm); color: var(--bad); font-weight: 600; font-size: var(--step--1); }
+[data-location-help] { margin-top: var(--space-4); }
+
+/* step 2 (Dwij, 5 Oct 2026): more room under the heading, smaller lead text, the file ending set as inline code,
+   and where to find the file on two lines, one per phone */
+.step > .panel__h2 { margin-bottom: var(--space-4); }
+.step__lead { font-size: var(--step--1); line-height: 1.55; }
+.file-ext {
+  font-family: var(--font-num); font-size: 0.92em; line-height: 1;
+  padding: 0.0625rem 0.3125rem; border-radius: 0.25rem;
+  background: var(--lavender-50); border: 1px solid var(--grey-300, #C9C8DD);
+  white-space: nowrap; vertical-align: baseline;
+}
+.step__lead + .field { margin-top: var(--space-4); }
+.os-hint { display: grid; gap: var(--space-1); margin-top: var(--space-3); }
+.os-hint__row { display: flex; align-items: center; gap: var(--space-2); }
+.os-hint__icon { flex: none; width: 1rem; height: 1rem; color: var(--ink); }
+
+/* the simulated upload's progress bar */
+.sim-progress { display: grid; gap: var(--space-1); margin-top: var(--space-3); }
+.sim-progress progress { width: 100%; height: 0.75rem; accent-color: var(--purple); }
+.sim-progress__label { font-size: var(--step--1); font-weight: 600; }
+
+/* changes (Dwij, 7 Oct 2026) */
+/* step 2: the four facts in smaller type; Recorded shows the date, then the 24-hour time on its own line */
+.bundle-card .facts > div { padding: var(--space-2) var(--space-3); }
+.bundle-card .facts dt { font-size: 0.75rem; }
+.bundle-card .facts dd { font-size: var(--step--1); line-height: 1.35; }
+.bundle-card .facts dd.num { font-size: var(--step-0); }
+.facts__time { display: block; font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+/* step 5: more room around the dashed preview line, and a thinner line */
+.preview { margin-top: var(--space-7); outline-width: 0.125rem; outline-offset: 0.75rem; }
+.step .preview + .panel { margin-top: var(--space-7); }
+.preview__download { margin-top: var(--space-3); }
+
+/* step 5: the box around Change something / Publish is shorter; Publish is the bigger button */
+.publish-bar { padding-block: var(--space-3); }
+.publish-bar .step__nav { margin-top: 0; }
+.publish-bar .field__error, .publish-bar .sim-progress { margin: 0 0 var(--space-3) 0; }
+.publish-bar [data-publish] { flex: 1 1 auto; max-width: 16rem; }
+.publish-bar [data-back] { white-space: nowrap; flex: none; padding-inline: var(--space-3); }

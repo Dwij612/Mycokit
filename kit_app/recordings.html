@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#02005F">
+  <title>Saved recordings — MycoKit</title>
+  <link rel="icon" type="image/png" href="assets/mascot/ready.png">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page_css/recordings.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="recordings">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html">MycoKit</a>
+      <p class="kit-chip" data-kit-chip data-state="online">
+        <span class="kit-chip__dot" aria-hidden="true"></span>
+        <span data-kit-chip-text>Kit connected</span>
+      </p>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every inner page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <!-- ===== Saved recordings: F-26 ===== -->
+    <section class="panel" aria-labelledby="rec-title">
+      <p class="eyebrow">Recordings</p>
+      <h1 id="rec-title" class="panel__title">Saved recordings</h1>
+      <p class="panel__lead">Everything recorded on this kit, newest first. Open one to listen or prepare it for upload.</p>
+
+      <ul class="rec-list" data-list></ul>
+
+      <div class="empty" data-empty hidden>
+        <p>No recordings on this kit yet. When you end a recording, it appears here.</p>
+      </div>
+
+      <p class="storage-line" data-space></p>
+    </section>
+
+    <div class="action-bar">
+      <div class="action-bar__inner">
+        <a class="btn btn--primary" href="index.html" data-primary>Start a new recording</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- the mushroom dock is added by js/modules/shell.js -->
+  <noscript>
+    <p class="noscript">MycoKit needs JavaScript to talk to the kit. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

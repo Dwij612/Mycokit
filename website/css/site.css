@@ -1,0 +1,107 @@
+/* site.css — pieces only the project website has. Everything else (tokens, panels, buttons, fields, the
+   probe lanes) is shared with the kit app: css/base.css, layout.css and components.css are copies
+   of Final_UI's, so the two look like one product. */
+
+/* ---------- header: says which of the two it is ---------- */
+.site-tag {
+  font-size: var(--step--1);
+  color: var(--lavender);
+  border: var(--line) solid var(--lavender);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-3);
+  white-space: nowrap;
+}
+
+/* the website is read on laptops too: let lists use the width */
+@media (min-width: 64em) {
+  body[data-page="studies"] .site-main,
+  body[data-page="home"] .site-main { max-width: 64rem; }
+}
+
+/* ---------- page frame: the footer sits at the bottom of the screen, small (Dwij, 5 Oct 2026) ----------
+   The body is a column; <main> takes the spare height, so on a short page the empty space goes above the
+   footer. The website has no mascot dock or action bar, so <main> no longer needs the kit app's 8.5rem
+   of room at the bottom. */
+body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+.site-main { flex: 1 0 auto; width: 100%; padding-bottom: var(--space-6); }
+@media (min-width: 40em) { .site-main { padding-bottom: var(--space-7); } }
+
+/* ---------- footer ---------- */
+.site-foot { padding: var(--space-3) var(--space-3) var(--space-4); background: var(--ink); color: var(--lavender-50); }
+.site-foot__inner { max-width: 40rem; margin-inline: auto; display: grid; gap: var(--space-1); font-size: 0.8125rem; line-height: 1.4; }
+.site-foot a { color: var(--white); }
+
+/* ---------- body text: phone-sized (Dwij, 5 Oct 2026: "too big for the phone") ----------
+   Body copy 15px on a phone, 16px from tablets up. Headings and buttons keep their sizes. Still rem, so
+   the reader's own text-size setting scales it (WCAG 1.4.4). */
+body { font-size: 0.9375rem; line-height: 1.5; }
+.field__hint, .note { font-size: 0.8125rem; }
+@media (min-width: 40em) { body { font-size: var(--step-0); } .field__hint, .note { font-size: var(--step--1); } }
+
+/* ---------- simulated upload (by design, Dwij 5 Oct 2026) ---------- */
+.sim-note { margin-top: var(--space-2); font-size: 0.8125rem; color: var(--grey-500); }
+
+/* ---------- small things ---------- */
+.stack { display: grid; gap: var(--space-4); }
+.field__error { color: var(--bad); font-weight: 600; font-size: var(--step--1); }
+.field__input[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 0.125rem var(--bad); }
+.field__input--code { text-transform: uppercase; letter-spacing: 0.08em; }
+.file-btn { cursor: pointer; }
+input.visually-hidden:focus-visible + .file-btn,
+.file-btn:focus-within { box-shadow: var(--shadow-sm), var(--focus); }
+.panel__more { margin-left: auto; font-weight: 600; }
+.cards__loading { color: var(--grey-500); padding: var(--space-3) 0; }
+.timeline__count { display: inline-block; min-width: 1.75rem; padding: 0 var(--space-2); text-align: center; font-family: var(--font-num); font-size: var(--step--1); background: var(--cream); border: var(--line) solid var(--ink); border-radius: 999px; }
+.tag { display: inline-block; padding: 0 var(--space-2); border: var(--line) solid var(--ink); border-radius: 999px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0; text-transform: none; vertical-align: middle; }
+.tag--example { background: var(--yellow); color: var(--ink); }
+.tag--inat { background: var(--lavender-50); margin-top: var(--space-3); padding: var(--space-1) var(--space-3); font-size: var(--step--1); }
+.choice--inline { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin-bottom: var(--space-3); }
+.choice--inline legend { width: 100%; }
+.btn-row { margin-top: var(--space-3); }
+
+/* ---------- study cards (Home, Studies) ---------- */
+.cards { display: grid; gap: var(--space-3); }
+.cards--grid { margin-top: var(--space-4); }
+@media (min-width: 40em) { .cards--grid { grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); } }
+.study-card {
+  position: relative;
+  display: grid; grid-template-columns: 5.5rem 1fr auto; gap: var(--space-3); align-items: center;
+  padding: var(--space-3);
+  background: var(--white);
+  border: var(--line) solid var(--ink);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+.study-card:hover { background: var(--lavender-50); }
+.study-card:focus-within { box-shadow: var(--shadow-sm), var(--focus); }
+.study-card__thumb { width: 5.5rem; aspect-ratio: 4 / 3; border-radius: 0.375rem; overflow: hidden; border: var(--line) solid var(--ink); background: var(--lavender-50); display: grid; place-items: center; }
+.study-card__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.study-card__nophoto { font-size: 0.75rem; color: var(--grey-500); text-align: center; }
+.study-card__title { font-family: var(--font-display); font-size: var(--step-1); font-weight: 400; line-height: 1.2; }
+.study-card__title a { color: var(--ink); text-decoration: none; }
+.study-card__title a::after { content: ""; position: absolute; inset: 0; }     /* the whole card opens the study */
+.study-card__meta { font-size: 0.75rem; color: var(--grey-500); margin-top: 0.125rem; }
+.study-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); font-size: 0.75rem; color: var(--grey-500); margin-top: var(--space-1); }
+.study-card .rec-card__chev { color: var(--ink); }
+
+/* ---------- the study page ---------- */
+.photos { display: grid; gap: var(--space-4); }
+@media (min-width: 40em) { .photos { grid-template-columns: 1fr 1fr; } }
+.photo { display: grid; gap: var(--space-2); }
+.photo img, .photo__nopreview { width: 100%; border: var(--line) solid var(--ink); border-radius: var(--radius-sm); background: var(--lavender-50); }
+.photo__nopreview { padding: var(--space-5) var(--space-3); font-size: var(--step--1); color: var(--grey-500); }
+.photo figcaption { display: grid; gap: 0.125rem; font-size: var(--step--1); }
+.study-notes { white-space: pre-wrap; font-size: var(--step-0); max-width: 60ch; }
+.study__remove { margin-top: var(--space-4); }
+.score { margin-top: var(--space-4); }
+.score__sheet { background: var(--white); border: var(--line) solid var(--ink); border-radius: var(--radius-sm); padding: var(--space-2); overflow-x: auto; }
+.score__sheet svg { max-width: 100%; height: auto; }
+
+@media print {
+  .site-header, .site-foot, .mascot, .crumb, .sim-note { display: none !important; }
+  .panel { box-shadow: none; }
+}
+
+/* the site's name is longer than the kit app's, so the wordmark steps down a size on a phone */
+.wordmark--site { font-size: clamp(var(--step-0), 4.6vw, var(--step-1)); line-height: 1.15; }
+.prose .list { list-style: disc; padding-left: 1.25rem; display: grid; gap: var(--space-1); margin-top: var(--space-2); }

@@ -1,0 +1,8 @@
+/* study.css — W2a Study page. (Most of it is in site.css, shared with the upload preview.) */
+[data-study] > .panel + .panel { margin-top: var(--space-4); }
+
+/* Listen (8 Oct 2026) */
+.listen-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+.listen-bar__clock { font-family: var(--font-num); }
+[data-listen-play] { min-width: 7rem; }
+.choice__row { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }

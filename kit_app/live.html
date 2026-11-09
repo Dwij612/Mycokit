@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#02005F">
+  <title>Live — MycoKit</title>
+  <link rel="icon" type="image/png" href="assets/mascot/ready.png">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page_css/live.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="live">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html">MycoKit</a>
+      <p class="kit-chip" data-kit-chip data-state="online">
+        <span class="kit-chip__dot" aria-hidden="true"></span>
+        <span data-kit-chip-text>Kit connected</span>
+      </p>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every inner page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <!-- ===== No recording running ===== -->
+    <section class="panel empty" data-view="none" aria-labelledby="none-title" hidden>
+      <p class="eyebrow">Live</p>
+      <h1 id="none-title" class="panel__title">No recording running</h1>
+      <p>Start one from the start screen, and the four probe lines appear here.</p>
+      <div class="action-bar">
+        <div class="action-bar__inner">
+          <a class="btn btn--primary" href="index.html">Start a recording</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Home (Live) ===== -->
+    <div data-view="live" hidden>
+
+      <section class="panel" aria-labelledby="live-title">
+        <p class="eyebrow eyebrow--live"><span class="live-dot" aria-hidden="true"></span>Recording</p>
+        <h1 id="live-title" class="panel__title">Your mushroom, live</h1>
+        <p class="live-meta" data-started>—</p>
+
+        <dl class="facts">
+          <div><dt>Running for</dt><dd class="num" data-elapsed>00:00:00</dd></div>
+          <!-- 28 Oct 2026 (Dwij): was "Space left", which read as time left to record -->
+          <div><dt>Storage on the kit</dt><dd data-space>—</dd></div>
+        </dl>
+
+        <!-- Settling: no prompts, no alerts, until the lines are steady -->
+        <div class="settle" data-settle data-state="settling" role="status">
+          <span class="settle__icon" aria-hidden="true"></span>
+          <p class="settle__text" data-settle-text>Letting the signal settle…</p>
+          <div class="meter settle__meter" aria-hidden="true"><span class="meter__fill" data-settle-fill></span></div>
+        </div>
+
+        <!-- 28 Oct 2026 (Dwij): the mushroom plays a sound with each prompt. Phones only allow sound after a tap
+             on this page, so Test sound also switches it on. -->
+        <div class="sound-check" data-sound-check>
+          <p class="sound-check__text">The mushroom plays a sound when it has something for you to try.</p>
+          <button class="btn btn--outline btn--small" type="button" data-test-chime>Test sound</button>
+        </div>
+        <p class="note note--plain sound-check__hint" data-chime-hint hidden role="status">No sound? Check your phone isn't on silent and the volume is up, then tap <strong>Test sound</strong> again.</p>
+
+        <div class="note" data-note-close-page>
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4M8 4.5v.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          <p>You can close this page or put your phone away. <strong>The kit keeps recording.</strong></p>
+          <button class="note__close" type="button" data-dismiss aria-label="Hide this note">
+            <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="signal-title">
+        <div class="panel__row">
+          <h2 id="signal-title" class="panel__h2">The four probes</h2>
+          <label class="switch">
+            <input type="checkbox" data-raw-toggle>
+            <span class="switch__track" aria-hidden="true"></span>
+            <span>Numbers</span>
+          </label>
+        </div>
+
+        <div data-chart></div>
+        <p class="trace__legend">Last 10 minutes. Newest on the right. <span class="demo-note">Demo data, not a real mushroom.</span></p>
+
+        <!-- Unusual activity: beeps + a red notch on that probe's line.
+             Removed 3 Oct 2026 (Dwij): the "N unusual moments so far · last: …" summary line under the chart.
+             Alerts still show as red notches, in the timeline, and from the mascot. -->
+
+        <details class="explain" data-explain>
+          <summary>What am I looking at?</summary>
+          <div class="explain__body">
+            <p>Each line is one probe. It shows the tiny voltage between that probe and the reference pin in the soil — usually less than a thousandth of a volt.</p>
+            <p>For the first half a minute or so the lines drift while the probes settle in. After that, a line that drifts or bumps may be the mushroom. A sudden jump on <em>every</em> line at once is more likely the wires being knocked.</p>
+            <p>A red notch means that probe did something unusual compared with its own last few minutes. There is no "right" shape. Watch for patterns that repeat, and for what happens after you try something.</p>
+          </div>
+        </details>
+
+        <details class="explain" data-alert-settings>
+          <summary>Alert settings</summary>
+          <div class="explain__body settings">
+            <label class="switch">
+              <input type="checkbox" data-beep-toggle checked>
+              <span class="switch__track" aria-hidden="true"></span>
+              <span>Beep when something unusual happens</span>
+            </label>
+            <fieldset class="choice">
+              <legend class="field__label">How sensitive</legend>
+              <label><input type="radio" name="sens" value="low"> Low</label>
+              <label><input type="radio" name="sens" value="medium"> Medium</label>
+              <label><input type="radio" name="sens" value="high"> High</label>
+            </fieldset>
+            <fieldset class="choice">
+              <legend class="field__label">Probes to watch</legend>
+              <label><input type="checkbox" name="watch" value="1"> Probe 1</label>
+              <label><input type="checkbox" name="watch" value="2"> Probe 2</label>
+              <label><input type="checkbox" name="watch" value="3"> Probe 3</label>
+              <label><input type="checkbox" name="watch" value="4"> Probe 4</label>
+            </fieldset>
+          </div>
+        </details>
+      </section>
+
+      <!-- ===== Everything that happened, newest first ===== -->
+      <section class="panel" aria-labelledby="timeline-title">
+        <details class="timeline fold" data-timeline>
+          <summary><h2 id="timeline-title" class="panel__h2">Timeline</h2> <span class="timeline__count" data-timeline-count>0</span></summary>
+          <ol class="timeline__list" data-timeline-list></ol>
+        </details>
+      </section>
+
+      <!-- ===== Research notes: open with +, timestamped to the second =====
+           3 Oct 2026 (Dwij): moved below the timeline; the on/off switch was replaced by this open/close section. -->
+      <section class="panel" aria-labelledby="notes-title">
+        <details class="fold" data-notes>
+          <summary><h2 id="notes-title" class="panel__h2">Research notes</h2></summary>
+          <form class="note-form" data-note-form>
+            <label class="field__label" for="note-text">New note <span class="field__optional num" data-note-at>at 00:00:00</span></label>
+            <textarea class="field__input note-form__input" id="note-text" rows="2" maxlength="500" placeholder="What did you see or do?"></textarea>
+            <button class="btn btn--secondary btn--small" type="submit">Add note</button>
+          </form>
+          <ol class="notes-list" data-notes-list aria-label="Notes, newest first"></ol>
+        </details>
+      </section>
+
+      <!-- End recording: its own full-width button below the notes (3 Oct 2026, Dwij: a major action, not hidden).
+           28 Oct 2026 (Dwij): renamed "End and save", and green instead of red: it saves, it doesn't delete.
+           It still asks to confirm before anything is stopped. -->
+      <div class="end-block">
+        <button class="btn btn--save end-block__btn" type="button" data-end>End and save</button>
+      </div>
+
+      <!-- Primary action: Listen — live, in real time, from the start (8 Oct 2026) -->
+      <div class="action-bar">
+        <div class="action-bar__inner">
+
+          <a class="btn btn--primary" href="sonify.html" data-listen>Listen live</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- the mushroom dock is added by js/modules/shell.js -->
+  <noscript>
+    <p class="noscript">MycoKit needs JavaScript to talk to the kit. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

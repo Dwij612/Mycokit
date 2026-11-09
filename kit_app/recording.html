@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#02005F">
+  <title>Recording — MycoKit</title>
+  <link rel="icon" type="image/png" href="assets/mascot/ready.png">
+  <link rel="preload" href="assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page_css/recording.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+
+<body data-page="recording">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html">MycoKit</a>
+      <p class="kit-chip" data-kit-chip data-state="online">
+        <span class="kit-chip__dot" aria-hidden="true"></span>
+        <span data-kit-chip-text>Kit connected</span>
+      </p>
+    </div>
+    <!-- main navigation is added by js/modules/shell.js (same on every inner page) -->
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+
+    <p class="crumb"><a href="recordings.html"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>Saved recordings</a></p>
+
+    <section class="panel empty" data-view="missing" aria-labelledby="missing-title" hidden>
+      <h1 id="missing-title" class="panel__title">Recording not found</h1>
+      <p>It may have been deleted. Go back to Saved recordings to see what's on the kit.</p>
+    </section>
+
+    <!-- ===== Recording detail: F-27 – F-30, F-33 ===== -->
+    <div data-view="detail" hidden>
+      <div class="banner" data-saved-banner role="status" hidden>
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+        <span>Saved on the kit. Nothing more to do unless you want to share it.</span>
+      </div>
+      <!-- real kit: a power cut ends a recording (Dwij, 5 Oct 2026) -->
+      <p class="note note--plain" data-power-note hidden>This recording ended when the kit lost power. Everything up to that moment is saved.</p>
+
+      <section class="panel" aria-labelledby="detail-title">
+        <p class="eyebrow">Recording</p>
+        <h1 id="detail-title" class="panel__title" data-title>—</h1>
+
+        <dl class="facts">
+          <div><dt>Started</dt><dd data-when>—</dd></div>
+          <div><dt>Length</dt><dd data-length>—</dd></div>
+          <div><dt>Recording ID</dt><dd class="num" data-code>—</dd></div>
+          <div><dt>Notes</dt><dd data-markers>—</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="preview-title">
+        <h2 id="preview-title" class="panel__h2">The whole recording</h2>
+        <div data-chart></div>
+        <p class="trace__legend"><span class="demo-note">Demo data.</span></p>
+
+        <div class="btn-row detail-actions">
+          <a class="btn btn--secondary" data-listen href="sonify.html">Listen</a>
+          <button class="btn btn--outline" type="button" data-csv>Download CSV</button>
+        </div>
+      </section>
+
+      <!-- Notes, markers and alerts, to review afterwards -->
+      <section class="panel" aria-labelledby="review-title">
+        <h2 id="review-title" class="panel__h2">Notes and timeline</h2>
+        <ol class="timeline__list" data-review></ol>
+        <p class="end-row"><button class="link-danger" type="button" data-delete>Delete this recording</button></p>
+      </section>
+
+      <!-- F-30: the way to the website -->
+      <div class="action-bar">
+        <div class="action-bar__inner">
+          <a class="btn btn--primary" data-upload href="upload.html">Prepare upload</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- the mushroom dock is added by js/modules/shell.js -->
+  <noscript>
+    <p class="noscript">MycoKit needs JavaScript to talk to the kit. Turn it on in your browser settings and reload this page.</p>
+  </noscript>
+</body>
+</html>

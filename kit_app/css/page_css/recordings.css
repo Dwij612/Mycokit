@@ -1,0 +1,4 @@
+/* recordings.css — Saved recordings. */
+.rec-list { margin-top: var(--space-4); }
+.rec-card { padding-right: 2.75rem; }
+.rec-card--live { background: var(--cream); }

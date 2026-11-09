@@ -1,0 +1,10 @@
+/* home.css — W1 Home. */
+.hero .panel__lead { max-width: 34ch; }
+.hero__actions { display: grid; gap: var(--space-3); }
+@media (min-width: 30em) { .hero__actions { grid-template-columns: auto auto; justify-content: start; } }
+.how { display: grid; gap: var(--space-3); padding-left: 1.5rem; }
+.how li::marker { font-family: var(--font-display); color: var(--purple-dark); }
+@media (min-width: 64em) {
+  [data-latest] { grid-template-columns: repeat(3, 1fr); }
+  .panel { max-width: none; }
+}
